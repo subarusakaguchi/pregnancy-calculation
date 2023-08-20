@@ -10,6 +10,20 @@ body {
   background-color: #ea7af4;
 }
 
+header {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  font-size: 4rem;
+  color: white;
+}
+
 section.main-container {
   background-color: white;
   position: absolute;
@@ -19,7 +33,23 @@ section.main-container {
   border-radius: 16px;
   width: 90%;
   padding: 12px;
-  min-height: 600px;
+}
+
+#result {
+  font-size: 24px;
+
+  margin-top: 16px;
+}
+
+div.input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+p.input-title {
+  font-size: 24px;
+
+  margin-bottom: 12px;
 }
 
 input[type="date"] {
