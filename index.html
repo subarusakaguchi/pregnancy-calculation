@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Gestacional</title>
+  </head>
+  <body>
+    <p id="result"></p>
+
+    <script>
+      const resultElement = document.getElementById("result");
+
+      const today = new Date();
+
+      const dum = new Date("2023-03-28".replace(/-/g, "\/").replace(/T.+/, ""));
+
+      const diffInDays = Math.floor(
+        (today.getTime() - dum.getTime()) / (24 * 60 * 60 * 1000)
+      );
+
+      const weeksAge = Math.floor(diffInDays / 7);
+
+      const daysAge = diffInDays % 7;
+
+      resultElement.innerText = `A Idade gestacional é ${weeksAge} semanas e ${daysAge} dias`;
+      // ------------------------------------
+
+      const monthOfDum = dum.getMonth();
+
+      let dpp = new Date();
+      let naegeleDay = dum.getDate() + 7;
+      let naegeleValueMonth = 3;
+
+      if (monthOfDum <= 2) {
+        naegeleValueMonth = 9;
+
+        if (naegeleDay > 31) {
+          naegeleDay = naegeleDay - 31;
+          naegeleValueMonth += 1;
+        }
+
+        let naegeleMonth = monthOfDum + 1 + naegeleValueMonth;
+
+        let naegeleYear = new Date().getFullYear();
+
+        if (naegeleMonth > 12) {
+          naegeleMonth = 1;
+          naegeleYear += 1;
+        }
+
+        dpp = new Date(
+          `${naegeleYear}-${naegeleMonth}-${naegeleDay}`
+            .replace(/-/g, "\/")
+            .replace(/T.+/, "")
+        );
+      } else if (monthOfDum >= 3) {
+        if (naegeleDay > 31) {
+          naegeleDay = naegeleDay - 31;
+          naegeleValueMonth -= 1;
+        }
+
+        const naegeleMonth = monthOfDum + 1 - naegeleValueMonth;
+
+        dpp = new Date(
+          `${new Date().getFullYear() + 1}-${naegeleMonth}-${naegeleDay}`
+            .replace(/-/g, "\/")
+            .replace(/T.+/, "")
+        );
+      }
+
+      resultElement.innerText += `. O dia provável do parto será: ${dpp}`;
+      // ------------------------------------
+
+      const TWO_WEEKS_IN_MS = 2 * 7 * 24 * 60 * 60 * 1000;
+
+      const conceptionDay = new Date(dum.getTime() + TWO_WEEKS_IN_MS);
+
+      resultElement.innerText += `. O dia provável da concepção foi: ${conceptionDay}`;
+    </script>
+  </body>
+</html>
