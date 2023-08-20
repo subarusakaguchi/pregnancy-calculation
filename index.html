@@ -6,11 +6,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cálculo Gestacional</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="manifest" href="manifest.json" />
   </head>
   <body>
     <header>
@@ -31,5 +33,10 @@
       <div id="result"></div>
     </section>
     <script src="./scripts/index.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js");
+      }
+    </script>
   </body>
 </html>
